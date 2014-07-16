@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Author: S. M.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:outputStylesheet name="css/stylesheet.css" />
+        <title>A couple of bread recipes</title>
+    </h:head>
+    <h:body>
+        <h:form id="componentForm">
+            <h1>Recipe List</h1>
+            <p>
+                Below is the list of recipes. Click on the recipe's name
+                for more information regarding the recipe.
+            </p>
+
+            <h:graphicImage id="bread" style="width: 10%; height: 20%" library="image" 
+                            name="bread.png"/>
+            <br/>
+            <h:dataTable id="recipeTable" border="1" value="#{recipeTableController.recipeList}"
+                         var="recipe">
+                <f:facet name="header">
+                    Our Bread Recipes
+                </f:facet>
+                <h:column>
+                    <h:commandLink id="recipeName" 
+                                   action="#{recipeTableController.displayRecipe(recipe.name)}"
+                                   value="#{recipe.name}"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <br/>
+        </h:form>
+    </h:body>
+</html>
